@@ -1,6 +1,6 @@
 module.exports = class {
-    constructor(promises) {
-        this.promises = promises;
+    constructor(fns) {
+        this.fns = fns;
         this.results = [];
         this.done = null;
         this.P = new Promise(resolve => {
@@ -8,21 +8,21 @@ module.exports = class {
         });
     }
 
-    add(promise) {
-        this.promises.push(promise);
+    add(fn) {
+        this.fns.push(fn);
     }
 
     run() {
         const results = this.results;
-        this.promises.forEach((p, i) => {
+        this.fns.forEach((fn, i) => {
             this.P = this.P
-                .then(p)
+                .then(fn)
                 .then(data => { 
                     results.push(data);
                     return results;
                 });
 
-            if (i === this.promises.length - 1) {
+            if (i === this.fns.length - 1) {
                 this.done();
             }
         });
