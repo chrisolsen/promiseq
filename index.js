@@ -1,4 +1,4 @@
-class PromiseQ {
+module.exports = class {
     constructor(promises) {
         this.promises = promises;
         this.results = [];
@@ -9,7 +9,7 @@ class PromiseQ {
     }
 
     add(promise) {
-        this.promises.append(promise);
+        this.promises.push(promise);
     }
 
     run() {
@@ -28,6 +28,4 @@ class PromiseQ {
         });
         return this.P;
     }
-}
-
-module.exports = PromiseQ;
+};
