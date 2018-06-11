@@ -1,6 +1,8 @@
 # promiseq
 
 ```
+const PromiseQ = require('promiseq');
+
 function getData(i) {
     return new Promise(resolve => {
         console.log("starting:", i);
